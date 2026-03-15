@@ -236,7 +236,7 @@ export default function App() {
   };
 
   return (
-    <div ref={containerRef} className="relative w-full h-[680vh] bg-gradient-to-b from-[#050000] via-[#1a0005] to-[#050000] overflow-hidden">
+    <div ref={containerRef} className="relative w-full h-[680vh] bg-gradient-to-b from-[#030303] via-[#0a0000] to-[#030303] overflow-hidden">
       {/* Global Overlays */}
       <div className="grain-overlay"></div>
       <div className="scroll-fog"></div>
@@ -263,7 +263,7 @@ export default function App() {
         <div ref={burgerContainerRef} className="relative w-full max-w-[400px] aspect-square flex items-center justify-center scale-75 md:scale-100" style={{ transformStyle: 'preserve-3d' }}>
           
           {/* Shockwave */}
-          <div ref={shockwaveRef} className="absolute w-full h-full rounded-full border-4 border-blood opacity-0 shadow-[0_0_50px_rgba(255,0,51,0.8)]"></div>
+          <div ref={shockwaveRef} className="absolute w-full h-full rounded-full border border-blood opacity-0 shadow-[0_0_80px_rgba(250,2,2,0.6)]"></div>
 
           {/* Ingredients */}
           <div ref={topBunRef} className="absolute w-full burger-layer z-[90]"><TopBun /></div>
@@ -288,8 +288,8 @@ export default function App() {
       {/* Perfection Text (appears at 50%) */}
       <section className="absolute top-[340vh] left-0 w-full h-screen flex items-start pt-[20vh] justify-center z-40 pointer-events-none -mt-[20vh]">
         <div className="relative">
-          <div className="absolute inset-0 bg-blood/20 blur-3xl rounded-full scale-150"></div>
-          <h2 ref={perfectionRef} className="relative glitch text-6xl md:text-7xl lg:text-9xl font-display text-cream tracking-widest opacity-0 translate-y-20 drop-shadow-[0_0_40px_rgba(255,0,51,1)]" data-text="SMASH.">
+          <div className="absolute inset-0 bg-blood/30 blur-[100px] rounded-full scale-150"></div>
+          <h2 ref={perfectionRef} className="relative glitch text-6xl md:text-7xl lg:text-9xl font-display text-cream tracking-[0.2em] opacity-0 translate-y-20 drop-shadow-[0_0_60px_rgba(250,2,2,0.8)]" data-text="SMASH.">
             SMASH.
           </h2>
         </div>
@@ -299,21 +299,21 @@ export default function App() {
       <section className="absolute top-[400vh] left-0 w-full min-h-screen z-20 px-6 md:px-24 py-32 flex flex-col gap-64">
         <div className="story-2 flex flex-col md:flex-row-reverse items-center justify-between gap-12">
           <div className="w-full md:w-1/2 text-center md:text-right">
-            <h3 className="parallax-text text-4xl md:text-6xl font-display text-blood mb-6 drop-shadow-[0_0_15px_rgba(255,0,51,0.8)]">La Costra Smash</h3>
-            <p className="parallax-text text-base md:text-xl text-cream/80 font-body leading-relaxed max-w-md mx-auto md:ml-auto md:mr-0">
-              Aplastada a la perfección sobre la plancha ardiente. Reacción de Maillard al máximo: bordes crujientes y caramelizados que encierran todo el jugo de la carne. Pura ciencia ochentera.
+            <h3 className="parallax-text text-4xl md:text-6xl font-display text-blood mb-6 drop-shadow-[0_0_25px_rgba(250,2,2,0.6)] tracking-wide">La Costra Smash</h3>
+            <p className="parallax-text text-base md:text-xl text-cream/90 font-body leading-relaxed max-w-md mx-auto md:ml-auto md:mr-0 font-light">
+              Aplastada a la perfección sobre la plancha ardiente. Reacción de Maillard al máximo: bordes crujientes y caramelizados que encierran todo el jugo de la carne. Pura elegancia culinaria.
             </p>
           </div>
-          <div className="w-full md:w-1/2 flex justify-center opacity-40 blur-sm">
-             <Patty className="w-full max-w-md transform scale-125 md:scale-150 -rotate-12" />
+          <div className="w-full md:w-1/2 flex justify-center opacity-60 blur-[2px]">
+             <Patty className="w-full max-w-md transform scale-125 md:scale-150 -rotate-12 drop-shadow-[0_20px_40px_rgba(0,0,0,0.8)]" />
           </div>
         </div>
       </section>
 
       {/* Brand / Values */}
-      <section className="absolute top-[480vh] left-0 w-full min-h-screen z-20 flex items-center justify-center px-6 md:px-8 bg-black/50 backdrop-blur-xl border-y border-blood/20">
+      <section className="absolute top-[480vh] left-0 w-full min-h-screen z-20 flex items-center justify-center px-6 md:px-8 bg-black/20 backdrop-blur-[40px] border-y border-cream/5">
         <div className="max-w-5xl mx-auto text-center">
-          <p className="parallax-text text-2xl md:text-5xl lg:text-7xl font-display text-cream leading-tight drop-shadow-[0_0_15px_rgba(255,0,51,0.5)]">
+          <p className="parallax-text text-2xl md:text-5xl lg:text-7xl font-display text-cream leading-tight drop-shadow-[0_0_20px_rgba(250,2,2,0.3)] font-light tracking-wide">
             "No hacemos comida rápida. Diseñamos arquitectura culinaria, capa por minuciosa capa."
           </p>
         </div>
@@ -321,7 +321,7 @@ export default function App() {
 
       {/* Menu Teaser / CTA */}
       <section className="absolute top-[560vh] left-0 w-full min-h-screen z-20 flex flex-col items-center justify-center px-4 md:px-8 pb-40">
-        <h3 className="parallax-text text-4xl md:text-5xl font-display text-inferno mb-12 md:mb-16 drop-shadow-[0_0_15px_rgba(255,77,0,0.6)] text-center">Creaciones de Autor</h3>
+        <h3 className="parallax-text text-4xl md:text-5xl font-display text-cream mb-12 md:mb-16 drop-shadow-[0_0_20px_rgba(250,2,2,0.5)] text-center tracking-widest">Creaciones de Autor</h3>
         
         <div className="flex flex-wrap justify-center gap-12 mb-24">
           {[1, 2, 3].map((item) => (
@@ -329,21 +329,21 @@ export default function App() {
               key={item}
               onMouseMove={handleMouseMove}
               onMouseLeave={handleMouseLeave}
-              className="w-72 h-96 bg-black/40 backdrop-blur-2xl border-2 border-crimson rounded-xl p-6 flex flex-col items-center justify-between shadow-[0_0_20px_rgba(153,0,17,0.4)] hover:shadow-[0_0_40px_rgba(255,0,51,0.6)] hover:border-blood transition-all duration-500 group"
+              className="w-72 h-96 bg-cream/5 backdrop-blur-3xl border border-cream/10 rounded-2xl p-6 flex flex-col items-center justify-between shadow-[0_20px_50px_rgba(0,0,0,0.5)] hover:shadow-[0_0_60px_rgba(250,2,2,0.3)] hover:border-blood/50 transition-all duration-700 group"
             >
-              <div className="w-full h-40 bg-gray-900 rounded-lg border border-white/10 mb-4 overflow-hidden relative flex items-center justify-center">
-                 <div className="absolute inset-0 bg-gradient-to-br from-blood/20 to-inferno/20 group-hover:opacity-100 opacity-50 transition-opacity"></div>
-                 <span className="text-white/40 font-display italic text-2xl z-10">LVL {item}</span>
+              <div className="w-full h-40 bg-black/40 rounded-xl border border-cream/5 mb-4 overflow-hidden relative flex items-center justify-center">
+                 <div className="absolute inset-0 bg-gradient-to-br from-blood/30 to-transparent group-hover:opacity-100 opacity-30 transition-opacity duration-700"></div>
+                 <span className="text-cream/60 font-display italic text-2xl z-10 tracking-widest">LVL {item}</span>
               </div>
               <div className="flex-1 flex flex-col justify-end items-center text-center w-full">
-                <h4 className="text-xl font-display text-inferno mb-2 uppercase tracking-wider">La Clásica No.{item}</h4>
-                <p className="text-sm text-cream/80">Doble carne, triple queso, salsa secreta.</p>
+                <h4 className="text-xl font-display text-blood mb-3 uppercase tracking-widest">La Clásica No.{item}</h4>
+                <p className="text-sm text-cream/70 font-light leading-relaxed">Doble carne, triple queso, salsa secreta.</p>
               </div>
             </div>
           ))}
         </div>
 
-        <button className="px-12 py-5 rounded-full bg-gradient-to-r from-blood to-inferno text-white font-display font-bold tracking-widest uppercase text-lg hover:from-inferno hover:to-blood transition-all shadow-[0_0_30px_rgba(255,0,51,0.6)] hover:shadow-[0_0_50px_rgba(255,77,0,0.8)]">
+        <button className="px-14 py-5 rounded-full bg-gradient-to-r from-blood to-[#8a0000] text-cream font-display font-bold tracking-[0.2em] uppercase text-sm hover:from-[#8a0000] hover:to-blood transition-all duration-500 shadow-[0_0_40px_rgba(250,2,2,0.4)] hover:shadow-[0_0_60px_rgba(250,2,2,0.6)] border border-blood/50">
           Insert Coin
         </button>
       </section>

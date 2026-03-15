@@ -68,12 +68,12 @@ export default function App() {
       });
     }
 
-    // Main Assembly Timeline (0% to 55% of scroll)
+    // Main Assembly Timeline (0% to 50% of scroll)
     const assembleTl = gsap.timeline({
       scrollTrigger: {
         trigger: containerRef.current,
         start: "top top",
-        end: "55% top",
+        end: "50% top",
         scrub: 1,
       }
     });
@@ -115,12 +115,12 @@ export default function App() {
       ease: "back.out(1.5)"
     }, 0.9);
 
-    // Recede burger after 55%
+    // Recede burger after 50%
     const recedeTl = gsap.timeline({
       scrollTrigger: {
         trigger: containerRef.current,
-        start: "55% top",
-        end: "75% top",
+        start: "50% top",
+        end: "65% top",
         scrub: 1,
       }
     });
@@ -236,34 +236,34 @@ export default function App() {
   };
 
   return (
-    <div ref={containerRef} className="relative w-full h-[500vh] bg-[#0b0014] overflow-hidden">
+    <div ref={containerRef} className="relative w-full h-[680vh] bg-[#0b0014] overflow-hidden">
       {/* Global Overlays */}
       <div className="grain-overlay"></div>
       <div className="scroll-fog"></div>
       <div className="synthwave-grid"></div>
 
       {/* Ambient Orbs */}
-      <div className="fixed top-1/4 left-1/4 w-[600px] h-[600px] ambient-orb orb-pink mix-blend-screen"></div>
-      <div className="fixed top-1/2 right-1/4 w-[800px] h-[800px] ambient-orb orb-cyan mix-blend-screen"></div>
-      <div className="fixed bottom-1/4 left-1/3 w-[500px] h-[500px] ambient-orb orb-yellow mix-blend-screen"></div>
+      <div className="fixed top-1/4 left-1/4 w-[300px] h-[300px] md:w-[600px] md:h-[600px] ambient-orb orb-pink mix-blend-screen"></div>
+      <div className="fixed top-1/2 right-1/4 w-[400px] h-[400px] md:w-[800px] md:h-[800px] ambient-orb orb-cyan mix-blend-screen"></div>
+      <div className="fixed bottom-1/4 left-1/3 w-[250px] h-[250px] md:w-[500px] md:h-[500px] ambient-orb orb-yellow mix-blend-screen"></div>
 
       {/* Floating Retro Objects */}
-      <div ref={cassetteRef} className="fixed top-[15%] right-[10%] w-48 opacity-40 z-10 pointer-events-none">
+      <div ref={cassetteRef} className="fixed top-[15%] right-[10%] w-32 md:w-48 opacity-40 z-10 pointer-events-none">
         <CassetteTape />
       </div>
-      <div ref={sunRef} className="fixed bottom-[20%] left-[5%] w-64 opacity-30 z-10 pointer-events-none">
+      <div ref={sunRef} className="fixed bottom-[20%] left-[5%] w-40 md:w-64 opacity-30 z-10 pointer-events-none">
         <RetroSun />
       </div>
-      <div ref={ghostRef} className="fixed top-[40%] left-[15%] w-24 opacity-50 z-10 pointer-events-none">
+      <div ref={ghostRef} className="fixed top-[40%] left-[15%] w-16 md:w-24 opacity-50 z-10 pointer-events-none">
         <ArcadeGhost />
       </div>
 
       {/* Fixed Burger Container */}
       <div className="fixed top-0 left-0 w-full h-screen flex items-center justify-center pointer-events-none z-30" style={{ perspective: '1200px' }}>
-        <div ref={burgerContainerRef} className="relative w-[400px] h-[400px] flex items-center justify-center" style={{ transformStyle: 'preserve-3d' }}>
+        <div ref={burgerContainerRef} className="relative w-full max-w-[400px] aspect-square flex items-center justify-center scale-75 md:scale-100" style={{ transformStyle: 'preserve-3d' }}>
           
           {/* Shockwave */}
-          <div ref={shockwaveRef} className="absolute w-[400px] h-[400px] rounded-full border-4 border-neon-pink opacity-0 shadow-[0_0_50px_rgba(255,0,160,0.8)]"></div>
+          <div ref={shockwaveRef} className="absolute w-full h-full rounded-full border-4 border-neon-pink opacity-0 shadow-[0_0_50px_rgba(255,0,160,0.8)]"></div>
 
           {/* Ingredients */}
           <div ref={topBunRef} className="absolute w-full burger-layer z-[90]"><TopBun /></div>
@@ -279,46 +279,46 @@ export default function App() {
       </div>
 
       {/* Hero Section (0-20vh) */}
-      <section className="absolute top-0 left-0 w-full h-screen flex items-center justify-center z-20 pointer-events-none">
-        <h1 ref={taglineRef} className="text-5xl md:text-7xl lg:text-8xl font-display text-cream tracking-wide text-center drop-shadow-2xl">
+      <section className="absolute top-0 left-0 w-full h-screen flex items-center justify-center z-20 pointer-events-none px-4">
+        <h1 ref={taglineRef} className="text-4xl md:text-7xl lg:text-8xl font-display text-cream tracking-wide text-center drop-shadow-2xl">
           {/* Text injected via JS */}
         </h1>
       </section>
 
-      {/* Perfection Text (appears at 55%) */}
-      <section className="absolute top-[275vh] left-0 w-full h-screen flex items-center justify-center z-20 pointer-events-none -mt-[20vh]">
-        <h2 ref={perfectionRef} className="glitch text-7xl md:text-9xl font-display text-neon-pink tracking-widest opacity-0 translate-y-20 drop-shadow-[0_0_30px_rgba(255,0,160,0.8)]" data-text="SMASH.">
+      {/* Perfection Text (appears at 50%) */}
+      <section className="absolute top-[340vh] left-0 w-full h-screen flex items-center justify-center z-20 pointer-events-none -mt-[20vh]">
+        <h2 ref={perfectionRef} className="glitch text-6xl md:text-7xl lg:text-9xl font-display text-neon-pink tracking-widest opacity-0 translate-y-20 drop-shadow-[0_0_30px_rgba(255,0,160,0.8)]" data-text="SMASH.">
           SMASH.
         </h2>
       </section>
 
-      {/* Ingredients Story (300vh - 380vh) */}
-      <section className="absolute top-[320vh] left-0 w-full min-h-screen z-20 px-8 md:px-24 py-32 flex flex-col gap-64">
+      {/* Ingredients Story */}
+      <section className="absolute top-[400vh] left-0 w-full min-h-screen z-20 px-6 md:px-24 py-32 flex flex-col gap-64">
         <div className="story-2 flex flex-col md:flex-row-reverse items-center justify-between gap-12">
-          <div className="w-full md:w-1/2 text-right">
+          <div className="w-full md:w-1/2 text-center md:text-right">
             <h3 className="parallax-text text-4xl md:text-6xl font-display text-neon-cyan mb-6 drop-shadow-[0_0_15px_rgba(0,240,255,0.8)]">La Costra Smash</h3>
-            <p className="parallax-text text-lg md:text-xl text-cream/80 font-body leading-relaxed max-w-md ml-auto">
+            <p className="parallax-text text-base md:text-xl text-cream/80 font-body leading-relaxed max-w-md mx-auto md:ml-auto md:mr-0">
               Aplastada a la perfección sobre la plancha ardiente. Reacción de Maillard al máximo: bordes crujientes y caramelizados que encierran todo el jugo de la carne. Pura ciencia ochentera.
             </p>
           </div>
           <div className="w-full md:w-1/2 flex justify-center opacity-40 blur-sm">
-             <Patty className="w-full max-w-md transform scale-150 -rotate-12" />
+             <Patty className="w-full max-w-md transform scale-125 md:scale-150 -rotate-12" />
           </div>
         </div>
       </section>
 
-      {/* Brand / Values (350vh - 425vh) */}
-      <section className="absolute top-[380vh] left-0 w-full min-h-screen z-20 flex items-center justify-center px-8 bg-black/50 backdrop-blur-xl border-y border-neon-pink/20">
+      {/* Brand / Values */}
+      <section className="absolute top-[480vh] left-0 w-full min-h-screen z-20 flex items-center justify-center px-6 md:px-8 bg-black/50 backdrop-blur-xl border-y border-neon-pink/20">
         <div className="max-w-5xl mx-auto text-center">
-          <p className="parallax-text text-3xl md:text-5xl lg:text-7xl font-display text-cream leading-tight drop-shadow-[0_0_10px_rgba(255,0,160,0.5)]">
+          <p className="parallax-text text-2xl md:text-5xl lg:text-7xl font-display text-cream leading-tight drop-shadow-[0_0_10px_rgba(255,0,160,0.5)]">
             "No hacemos comida rápida. Diseñamos arquitectura culinaria, capa por minuciosa capa."
           </p>
         </div>
       </section>
 
-      {/* Menu Teaser / CTA (425vh - 500vh) */}
-      <section className="absolute top-[450vh] left-0 w-full min-h-screen z-20 flex flex-col items-center justify-center px-8 pb-32">
-        <h3 className="parallax-text text-5xl font-display text-neon-yellow mb-16 drop-shadow-[0_0_15px_rgba(255,230,0,0.6)]">Creaciones de Autor</h3>
+      {/* Menu Teaser / CTA */}
+      <section className="absolute top-[560vh] left-0 w-full min-h-screen z-20 flex flex-col items-center justify-center px-4 md:px-8 pb-40">
+        <h3 className="parallax-text text-4xl md:text-5xl font-display text-neon-yellow mb-12 md:mb-16 drop-shadow-[0_0_15px_rgba(255,230,0,0.6)] text-center">Creaciones de Autor</h3>
         
         <div className="flex flex-wrap justify-center gap-12 mb-24">
           {[1, 2, 3].map((item) => (

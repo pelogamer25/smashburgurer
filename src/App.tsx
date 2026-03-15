@@ -1,0 +1,360 @@
+/**
+ * @license
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+import React, { useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { TopBun, Cheese, Patty, Lettuce, Tomato, Onions, Pickles, Sauce, BottomBun } from './components/BurgerIngredients';
+import { CassetteTape, RetroSun, ArcadeGhost } from './components/RetroObjects';
+
+gsap.registerPlugin(ScrollTrigger);
+
+export default function App() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const burgerContainerRef = useRef<HTMLDivElement>(null);
+  
+  const topBunRef = useRef<HTMLDivElement>(null);
+  const cheeseRef = useRef<HTMLDivElement>(null);
+  const pattyRef = useRef<HTMLDivElement>(null);
+  const lettuceRef = useRef<HTMLDivElement>(null);
+  const tomatoRef = useRef<HTMLDivElement>(null);
+  const onionsRef = useRef<HTMLDivElement>(null);
+  const picklesRef = useRef<HTMLDivElement>(null);
+  const sauceRef = useRef<HTMLDivElement>(null);
+  const bottomBunRef = useRef<HTMLDivElement>(null);
+
+  const taglineRef = useRef<HTMLHeadingElement>(null);
+  const perfectionRef = useRef<HTMLHeadingElement>(null);
+  const shockwaveRef = useRef<HTMLDivElement>(null);
+
+  // Retro objects refs
+  const cassetteRef = useRef<HTMLDivElement>(null);
+  const sunRef = useRef<HTMLDivElement>(null);
+  const ghostRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+
+    // Initial setup for deconstructed burger
+    gsap.set(topBunRef.current, { y: -350, z: 300, rotationX: 15, rotationZ: -5, x: -20 });
+    gsap.set(cheeseRef.current, { y: -200, z: 200, rotationX: 10, x: 30 });
+    gsap.set(pattyRef.current, { y: -50, z: 100, rotationX: 25, rotationY: 15 });
+    gsap.set(lettuceRef.current, { y: 100, z: 50, rotationZ: 12, x: -10 });
+    gsap.set(tomatoRef.current, { y: 200, z: 0, x: 25 });
+    gsap.set(onionsRef.current, { y: 300, z: -50, rotationZ: -15 });
+    gsap.set(picklesRef.current, { y: 400, z: -100, rotationX: -20, x: -15 });
+    gsap.set(sauceRef.current, { y: 450, z: -150, opacity: 0, scale: 0.8 });
+    gsap.set(bottomBunRef.current, { y: 550, z: -200, rotationX: -5 });
+
+    // Typewriter effect for tagline
+    const taglineText = "Construida capa por capa.";
+    if (taglineRef.current) {
+      taglineRef.current.innerHTML = '';
+      taglineText.split('').forEach((char, i) => {
+        const span = document.createElement('span');
+        span.textContent = char;
+        span.style.opacity = '0';
+        taglineRef.current?.appendChild(span);
+      });
+
+      gsap.to(taglineRef.current.children, {
+        opacity: 1,
+        stagger: 0.05,
+        duration: 0.1,
+        ease: "none",
+        delay: 0.5
+      });
+    }
+
+    // Main Assembly Timeline (0% to 55% of scroll)
+    const assembleTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "top top",
+        end: "55% top",
+        scrub: 1,
+      }
+    });
+
+    // Fade out tagline
+    assembleTl.to(taglineRef.current, { opacity: 0, y: -50, duration: 0.1 }, 0);
+
+    // Assemble ingredients
+    const finalOffsets = [-140, -90, -50, -10, 20, 40, 60, 80, 110];
+    const refs = [topBunRef, cheeseRef, pattyRef, lettuceRef, tomatoRef, onionsRef, picklesRef, sauceRef, bottomBunRef];
+    
+    refs.forEach((ref, index) => {
+      assembleTl.to(ref.current, {
+        y: finalOffsets[index],
+        z: 0,
+        x: 0,
+        rotationX: 0,
+        rotationY: 0,
+        rotationZ: 0,
+        opacity: 1,
+        scale: 1,
+        ease: "power2.inOut",
+      }, 0);
+    });
+
+    // Shockwave and Perfection text at 55%
+    assembleTl.to(shockwaveRef.current, {
+      scale: 3,
+      opacity: 0,
+      duration: 0.2,
+      ease: "power2.out"
+    }, 0.9);
+
+    assembleTl.to(perfectionRef.current, {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      duration: 0.2,
+      ease: "back.out(1.5)"
+    }, 0.9);
+
+    // Recede burger after 55%
+    const recedeTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "55% top",
+        end: "75% top",
+        scrub: 1,
+      }
+    });
+
+    recedeTl.to(burgerContainerRef.current, {
+      scale: 0.5,
+      y: -300,
+      opacity: 0.2,
+      filter: "blur(10px)",
+      ease: "power1.inOut"
+    }, 0);
+    
+    recedeTl.to(perfectionRef.current, {
+      opacity: 0,
+      y: -100,
+      ease: "power1.in"
+    }, 0);
+
+    // Text Parallax
+    const parallaxTexts = document.querySelectorAll('.parallax-text');
+    parallaxTexts.forEach((text) => {
+      gsap.to(text, {
+        y: -100,
+        scrollTrigger: {
+          trigger: text,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: 1,
+        }
+      });
+    });
+
+    // Ingredients Story Horizontal Parallax
+    const story2 = document.querySelector('.story-2');
+    if (story2) {
+      gsap.fromTo(story2, 
+        { x: 100, opacity: 0 },
+        { 
+          x: 0, 
+          opacity: 1,
+          scrollTrigger: {
+            trigger: story2,
+            start: "top 80%",
+            end: "top 40%",
+            scrub: 1,
+          }
+        }
+      );
+    }
+
+    // Retro objects floating animations
+    gsap.to(cassetteRef.current, {
+      y: -30,
+      rotationX: 15,
+      rotationY: 20,
+      duration: 4,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut"
+    });
+
+    gsap.to(sunRef.current, {
+      y: 20,
+      rotationZ: 10,
+      duration: 5,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut"
+    });
+
+    gsap.to(ghostRef.current, {
+      y: -20,
+      x: 15,
+      duration: 3,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut"
+    });
+
+    // Cleanup
+    return () => {
+      ScrollTrigger.getAll().forEach(t => t.kill());
+    };
+  }, []);
+
+  // Mouse tilt effect for cards
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const card = e.currentTarget;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = ((y - centerY) / centerY) * -15;
+    const rotateY = ((x - centerX) / centerX) * 15;
+
+    gsap.to(card, {
+      rotateX,
+      rotateY,
+      duration: 0.5,
+      ease: "power2.out",
+      transformPerspective: 1000,
+    });
+  };
+
+  const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
+    gsap.to(e.currentTarget, {
+      rotateX: 0,
+      rotateY: 0,
+      duration: 0.5,
+      ease: "power2.out"
+    });
+  };
+
+  return (
+    <div ref={containerRef} className="relative w-full h-[500vh] bg-[#0b0014] overflow-hidden">
+      {/* Global Overlays */}
+      <div className="grain-overlay"></div>
+      <div className="scroll-fog"></div>
+      <div className="synthwave-grid"></div>
+
+      {/* Ambient Orbs */}
+      <div className="fixed top-1/4 left-1/4 w-[600px] h-[600px] ambient-orb orb-pink mix-blend-screen"></div>
+      <div className="fixed top-1/2 right-1/4 w-[800px] h-[800px] ambient-orb orb-cyan mix-blend-screen"></div>
+      <div className="fixed bottom-1/4 left-1/3 w-[500px] h-[500px] ambient-orb orb-yellow mix-blend-screen"></div>
+
+      {/* Floating Retro Objects */}
+      <div ref={cassetteRef} className="fixed top-[15%] right-[10%] w-48 opacity-40 z-10 pointer-events-none">
+        <CassetteTape />
+      </div>
+      <div ref={sunRef} className="fixed bottom-[20%] left-[5%] w-64 opacity-30 z-10 pointer-events-none">
+        <RetroSun />
+      </div>
+      <div ref={ghostRef} className="fixed top-[40%] left-[15%] w-24 opacity-50 z-10 pointer-events-none">
+        <ArcadeGhost />
+      </div>
+
+      {/* Fixed Burger Container */}
+      <div className="fixed top-0 left-0 w-full h-screen flex items-center justify-center pointer-events-none z-30" style={{ perspective: '1200px' }}>
+        <div ref={burgerContainerRef} className="relative w-[400px] h-[400px] flex items-center justify-center" style={{ transformStyle: 'preserve-3d' }}>
+          
+          {/* Shockwave */}
+          <div ref={shockwaveRef} className="absolute w-[400px] h-[400px] rounded-full border-4 border-neon-pink opacity-0 shadow-[0_0_50px_rgba(255,0,160,0.8)]"></div>
+
+          {/* Ingredients */}
+          <div ref={topBunRef} className="absolute w-full burger-layer z-[90]"><TopBun /></div>
+          <div ref={cheeseRef} className="absolute w-[105%] burger-layer z-[80]"><Cheese /></div>
+          <div ref={pattyRef} className="absolute w-full burger-layer z-[70]"><Patty /></div>
+          <div ref={lettuceRef} className="absolute w-[110%] burger-layer z-[60]"><Lettuce /></div>
+          <div ref={tomatoRef} className="absolute w-full burger-layer z-[50]"><Tomato /></div>
+          <div ref={onionsRef} className="absolute w-[95%] burger-layer z-[40]"><Onions /></div>
+          <div ref={picklesRef} className="absolute w-[90%] burger-layer z-[30]"><Pickles /></div>
+          <div ref={sauceRef} className="absolute w-[95%] burger-layer z-[20]"><Sauce /></div>
+          <div ref={bottomBunRef} className="absolute w-full burger-layer z-[10]"><BottomBun /></div>
+        </div>
+      </div>
+
+      {/* Hero Section (0-20vh) */}
+      <section className="absolute top-0 left-0 w-full h-screen flex items-center justify-center z-20 pointer-events-none">
+        <h1 ref={taglineRef} className="text-5xl md:text-7xl lg:text-8xl font-display text-cream tracking-wide text-center drop-shadow-2xl">
+          {/* Text injected via JS */}
+        </h1>
+      </section>
+
+      {/* Perfection Text (appears at 55%) */}
+      <section className="absolute top-[275vh] left-0 w-full h-screen flex items-center justify-center z-20 pointer-events-none -mt-[20vh]">
+        <h2 ref={perfectionRef} className="glitch text-7xl md:text-9xl font-display text-neon-pink tracking-widest opacity-0 translate-y-20 drop-shadow-[0_0_30px_rgba(255,0,160,0.8)]" data-text="SMASH.">
+          SMASH.
+        </h2>
+      </section>
+
+      {/* Ingredients Story (300vh - 380vh) */}
+      <section className="absolute top-[320vh] left-0 w-full min-h-screen z-20 px-8 md:px-24 py-32 flex flex-col gap-64">
+        <div className="story-2 flex flex-col md:flex-row-reverse items-center justify-between gap-12">
+          <div className="w-full md:w-1/2 text-right">
+            <h3 className="parallax-text text-4xl md:text-6xl font-display text-neon-cyan mb-6 drop-shadow-[0_0_15px_rgba(0,240,255,0.8)]">La Costra Smash</h3>
+            <p className="parallax-text text-lg md:text-xl text-cream/80 font-body leading-relaxed max-w-md ml-auto">
+              Aplastada a la perfección sobre la plancha ardiente. Reacción de Maillard al máximo: bordes crujientes y caramelizados que encierran todo el jugo de la carne. Pura ciencia ochentera.
+            </p>
+          </div>
+          <div className="w-full md:w-1/2 flex justify-center opacity-40 blur-sm">
+             <Patty className="w-full max-w-md transform scale-150 -rotate-12" />
+          </div>
+        </div>
+      </section>
+
+      {/* Brand / Values (350vh - 425vh) */}
+      <section className="absolute top-[380vh] left-0 w-full min-h-screen z-20 flex items-center justify-center px-8 bg-black/50 backdrop-blur-xl border-y border-neon-pink/20">
+        <div className="max-w-5xl mx-auto text-center">
+          <p className="parallax-text text-3xl md:text-5xl lg:text-7xl font-display text-cream leading-tight drop-shadow-[0_0_10px_rgba(255,0,160,0.5)]">
+            "No hacemos comida rápida. Diseñamos arquitectura culinaria, capa por minuciosa capa."
+          </p>
+        </div>
+      </section>
+
+      {/* Menu Teaser / CTA (425vh - 500vh) */}
+      <section className="absolute top-[450vh] left-0 w-full min-h-screen z-20 flex flex-col items-center justify-center px-8 pb-32">
+        <h3 className="parallax-text text-5xl font-display text-neon-yellow mb-16 drop-shadow-[0_0_15px_rgba(255,230,0,0.6)]">Creaciones de Autor</h3>
+        
+        <div className="flex flex-wrap justify-center gap-12 mb-24">
+          {[1, 2, 3].map((item) => (
+            <div 
+              key={item}
+              onMouseMove={handleMouseMove}
+              onMouseLeave={handleMouseLeave}
+              className="w-72 h-96 bg-[#0b0014] border-2 border-neon-cyan rounded-xl p-6 flex flex-col items-center justify-between shadow-[0_0_20px_rgba(0,240,255,0.4)] hover:shadow-[0_0_40px_rgba(255,0,160,0.6)] hover:border-neon-pink transition-all duration-500 group"
+            >
+              <div className="w-full h-40 bg-gray-900 rounded-lg border border-white/10 mb-4 overflow-hidden relative flex items-center justify-center">
+                 <div className="absolute inset-0 bg-gradient-to-br from-neon-pink/20 to-neon-cyan/20 group-hover:opacity-100 opacity-50 transition-opacity"></div>
+                 <span className="text-white/40 font-display italic text-2xl z-10">LVL {item}</span>
+              </div>
+              <div className="flex-1 flex flex-col justify-end items-center text-center w-full">
+                <h4 className="text-xl font-display text-neon-yellow mb-2 uppercase tracking-wider">La Clásica No.{item}</h4>
+                <p className="text-sm text-cream/80">Doble carne, triple queso, salsa secreta.</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <button className="px-12 py-5 rounded-full bg-neon-pink text-white font-display font-bold tracking-widest uppercase text-lg hover:bg-neon-cyan hover:text-black transition-colors shadow-[0_0_30px_rgba(255,0,160,0.6)] hover:shadow-[0_0_50px_rgba(0,240,255,0.8)]">
+          Insert Coin
+        </button>
+      </section>
+
+      {/* Footer */}
+      <footer className="absolute bottom-0 left-0 w-full h-[20vh] bg-black z-30 flex flex-col items-center justify-center border-t border-white/5">
+        <div className="w-12 h-12 opacity-50 mb-4">
+          <TopBun />
+          <Patty className="-mt-12" />
+          <BottomBun className="-mt-12" />
+        </div>
+        <p className="text-xs text-cream/40 font-body tracking-widest uppercase">© 2026 Smash</p>
+      </footer>
+    </div>
+  );
+}
+

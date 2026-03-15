@@ -1,11 +1,11 @@
 @import "tailwindcss";
 
 @theme {
-  --color-space: #0b0014;
+  --color-void: #050000;
   --color-charcoal: #0d0a08;
-  --color-neon-pink: #ff00a0;
-  --color-neon-cyan: #00f0ff;
-  --color-neon-yellow: #ffe600;
+  --color-blood: #ff0033;
+  --color-crimson: #990011;
+  --color-inferno: #ff4d00;
   --color-cream: #fdfbf7;
 
   --font-display: "Orbitron", sans-serif;
@@ -13,7 +13,7 @@
 }
 
 body {
-  background-color: var(--color-space);
+  background-color: var(--color-void);
   color: var(--color-cream);
   font-family: var(--font-body);
   overflow-x: hidden;
@@ -49,7 +49,7 @@ h1, h2, h3, h4, h5, h6 {
   transform: translate(-50%, -50%);
   width: 150vw;
   height: 150vh;
-  background: radial-gradient(circle, rgba(11, 0, 20, 0) 20%, rgba(11, 0, 20, 0.8) 60%, rgba(11, 0, 20, 1) 100%);
+  background: radial-gradient(circle, rgba(5, 0, 0, 0) 20%, rgba(20, 0, 0, 0.7) 60%, rgba(5, 0, 0, 1) 100%);
   pointer-events: none;
   z-index: 10;
 }
@@ -59,14 +59,14 @@ h1, h2, h3, h4, h5, h6 {
   position: absolute;
   border-radius: 50%;
   filter: blur(150px);
-  opacity: 0.5;
+  opacity: 0.6;
   pointer-events: none;
   z-index: 0;
 }
 
-.orb-pink { background: var(--color-neon-pink); }
-.orb-cyan { background: var(--color-neon-cyan); }
-.orb-yellow { background: var(--color-neon-yellow); }
+.orb-blood { background: var(--color-blood); }
+.orb-crimson { background: var(--color-crimson); }
+.orb-inferno { background: var(--color-inferno); }
 
 /* Synthwave Grid */
 .synthwave-grid {
@@ -76,8 +76,8 @@ h1, h2, h3, h4, h5, h6 {
   width: 200%;
   height: 60vh;
   background-image:
-    linear-gradient(to right, rgba(255, 0, 160, 0.4) 1px, transparent 1px),
-    linear-gradient(to top, rgba(0, 240, 255, 0.4) 1px, transparent 1px);
+    linear-gradient(to right, rgba(255, 0, 51, 0.3) 1px, transparent 1px),
+    linear-gradient(to top, rgba(255, 77, 0, 0.3) 1px, transparent 1px);
   background-size: 60px 60px;
   transform: perspective(600px) rotateX(70deg);
   animation: gridMove 3s linear infinite;
@@ -107,13 +107,13 @@ h1, h2, h3, h4, h5, h6 {
   opacity: 0.8;
 }
 .glitch::before {
-  color: var(--color-neon-cyan);
+  color: var(--color-blood);
   z-index: -1;
   transform: translate(-4px, 2px);
   animation: glitch-anim 0.4s cubic-bezier(.25, .46, .45, .94) both infinite;
 }
 .glitch::after {
-  color: var(--color-neon-pink);
+  color: var(--color-inferno);
   z-index: -2;
   transform: translate(4px, -2px);
   animation: glitch-anim 0.4s cubic-bezier(.25, .46, .45, .94) reverse both infinite;
@@ -130,9 +130,9 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Hide scrollbar */
 ::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: var(--color-space); }
-::-webkit-scrollbar-thumb { background: var(--color-neon-pink); border-radius: 4px; }
-::-webkit-scrollbar-thumb:hover { background: var(--color-neon-cyan); }
+::-webkit-scrollbar-track { background: var(--color-void); }
+::-webkit-scrollbar-thumb { background: var(--color-blood); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-inferno); }
 
 .burger-layer {
   will-change: transform;

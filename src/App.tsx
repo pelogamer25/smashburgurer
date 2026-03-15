@@ -236,16 +236,16 @@ export default function App() {
   };
 
   return (
-    <div ref={containerRef} className="relative w-full h-[680vh] bg-[#0b0014] overflow-hidden">
+    <div ref={containerRef} className="relative w-full h-[680vh] bg-gradient-to-b from-[#050000] via-[#1a0005] to-[#050000] overflow-hidden">
       {/* Global Overlays */}
       <div className="grain-overlay"></div>
       <div className="scroll-fog"></div>
       <div className="synthwave-grid"></div>
 
       {/* Ambient Orbs */}
-      <div className="fixed top-1/4 left-1/4 w-[300px] h-[300px] md:w-[600px] md:h-[600px] ambient-orb orb-pink mix-blend-screen"></div>
-      <div className="fixed top-1/2 right-1/4 w-[400px] h-[400px] md:w-[800px] md:h-[800px] ambient-orb orb-cyan mix-blend-screen"></div>
-      <div className="fixed bottom-1/4 left-1/3 w-[250px] h-[250px] md:w-[500px] md:h-[500px] ambient-orb orb-yellow mix-blend-screen"></div>
+      <div className="fixed top-1/4 left-1/4 w-[300px] h-[300px] md:w-[600px] md:h-[600px] ambient-orb orb-blood mix-blend-screen"></div>
+      <div className="fixed top-1/2 right-1/4 w-[400px] h-[400px] md:w-[800px] md:h-[800px] ambient-orb orb-crimson mix-blend-screen"></div>
+      <div className="fixed bottom-1/4 left-1/3 w-[250px] h-[250px] md:w-[500px] md:h-[500px] ambient-orb orb-inferno mix-blend-screen"></div>
 
       {/* Floating Retro Objects */}
       <div ref={cassetteRef} className="fixed top-[15%] right-[10%] w-32 md:w-48 opacity-40 z-10 pointer-events-none">
@@ -263,7 +263,7 @@ export default function App() {
         <div ref={burgerContainerRef} className="relative w-full max-w-[400px] aspect-square flex items-center justify-center scale-75 md:scale-100" style={{ transformStyle: 'preserve-3d' }}>
           
           {/* Shockwave */}
-          <div ref={shockwaveRef} className="absolute w-full h-full rounded-full border-4 border-neon-pink opacity-0 shadow-[0_0_50px_rgba(255,0,160,0.8)]"></div>
+          <div ref={shockwaveRef} className="absolute w-full h-full rounded-full border-4 border-blood opacity-0 shadow-[0_0_50px_rgba(255,0,51,0.8)]"></div>
 
           {/* Ingredients */}
           <div ref={topBunRef} className="absolute w-full burger-layer z-[90]"><TopBun /></div>
@@ -286,17 +286,20 @@ export default function App() {
       </section>
 
       {/* Perfection Text (appears at 50%) */}
-      <section className="absolute top-[340vh] left-0 w-full h-screen flex items-center justify-center z-20 pointer-events-none -mt-[20vh]">
-        <h2 ref={perfectionRef} className="glitch text-6xl md:text-7xl lg:text-9xl font-display text-neon-pink tracking-widest opacity-0 translate-y-20 drop-shadow-[0_0_30px_rgba(255,0,160,0.8)]" data-text="SMASH.">
-          SMASH.
-        </h2>
+      <section className="absolute top-[340vh] left-0 w-full h-screen flex items-start pt-[20vh] justify-center z-40 pointer-events-none -mt-[20vh]">
+        <div className="relative">
+          <div className="absolute inset-0 bg-blood/20 blur-3xl rounded-full scale-150"></div>
+          <h2 ref={perfectionRef} className="relative glitch text-6xl md:text-7xl lg:text-9xl font-display text-cream tracking-widest opacity-0 translate-y-20 drop-shadow-[0_0_40px_rgba(255,0,51,1)]" data-text="SMASH.">
+            SMASH.
+          </h2>
+        </div>
       </section>
 
       {/* Ingredients Story */}
       <section className="absolute top-[400vh] left-0 w-full min-h-screen z-20 px-6 md:px-24 py-32 flex flex-col gap-64">
         <div className="story-2 flex flex-col md:flex-row-reverse items-center justify-between gap-12">
           <div className="w-full md:w-1/2 text-center md:text-right">
-            <h3 className="parallax-text text-4xl md:text-6xl font-display text-neon-cyan mb-6 drop-shadow-[0_0_15px_rgba(0,240,255,0.8)]">La Costra Smash</h3>
+            <h3 className="parallax-text text-4xl md:text-6xl font-display text-blood mb-6 drop-shadow-[0_0_15px_rgba(255,0,51,0.8)]">La Costra Smash</h3>
             <p className="parallax-text text-base md:text-xl text-cream/80 font-body leading-relaxed max-w-md mx-auto md:ml-auto md:mr-0">
               Aplastada a la perfección sobre la plancha ardiente. Reacción de Maillard al máximo: bordes crujientes y caramelizados que encierran todo el jugo de la carne. Pura ciencia ochentera.
             </p>
@@ -308,9 +311,9 @@ export default function App() {
       </section>
 
       {/* Brand / Values */}
-      <section className="absolute top-[480vh] left-0 w-full min-h-screen z-20 flex items-center justify-center px-6 md:px-8 bg-black/50 backdrop-blur-xl border-y border-neon-pink/20">
+      <section className="absolute top-[480vh] left-0 w-full min-h-screen z-20 flex items-center justify-center px-6 md:px-8 bg-black/50 backdrop-blur-xl border-y border-blood/20">
         <div className="max-w-5xl mx-auto text-center">
-          <p className="parallax-text text-2xl md:text-5xl lg:text-7xl font-display text-cream leading-tight drop-shadow-[0_0_10px_rgba(255,0,160,0.5)]">
+          <p className="parallax-text text-2xl md:text-5xl lg:text-7xl font-display text-cream leading-tight drop-shadow-[0_0_15px_rgba(255,0,51,0.5)]">
             "No hacemos comida rápida. Diseñamos arquitectura culinaria, capa por minuciosa capa."
           </p>
         </div>
@@ -318,7 +321,7 @@ export default function App() {
 
       {/* Menu Teaser / CTA */}
       <section className="absolute top-[560vh] left-0 w-full min-h-screen z-20 flex flex-col items-center justify-center px-4 md:px-8 pb-40">
-        <h3 className="parallax-text text-4xl md:text-5xl font-display text-neon-yellow mb-12 md:mb-16 drop-shadow-[0_0_15px_rgba(255,230,0,0.6)] text-center">Creaciones de Autor</h3>
+        <h3 className="parallax-text text-4xl md:text-5xl font-display text-inferno mb-12 md:mb-16 drop-shadow-[0_0_15px_rgba(255,77,0,0.6)] text-center">Creaciones de Autor</h3>
         
         <div className="flex flex-wrap justify-center gap-12 mb-24">
           {[1, 2, 3].map((item) => (
@@ -326,21 +329,21 @@ export default function App() {
               key={item}
               onMouseMove={handleMouseMove}
               onMouseLeave={handleMouseLeave}
-              className="w-72 h-96 bg-[#0b0014] border-2 border-neon-cyan rounded-xl p-6 flex flex-col items-center justify-between shadow-[0_0_20px_rgba(0,240,255,0.4)] hover:shadow-[0_0_40px_rgba(255,0,160,0.6)] hover:border-neon-pink transition-all duration-500 group"
+              className="w-72 h-96 bg-black/40 backdrop-blur-2xl border-2 border-crimson rounded-xl p-6 flex flex-col items-center justify-between shadow-[0_0_20px_rgba(153,0,17,0.4)] hover:shadow-[0_0_40px_rgba(255,0,51,0.6)] hover:border-blood transition-all duration-500 group"
             >
               <div className="w-full h-40 bg-gray-900 rounded-lg border border-white/10 mb-4 overflow-hidden relative flex items-center justify-center">
-                 <div className="absolute inset-0 bg-gradient-to-br from-neon-pink/20 to-neon-cyan/20 group-hover:opacity-100 opacity-50 transition-opacity"></div>
+                 <div className="absolute inset-0 bg-gradient-to-br from-blood/20 to-inferno/20 group-hover:opacity-100 opacity-50 transition-opacity"></div>
                  <span className="text-white/40 font-display italic text-2xl z-10">LVL {item}</span>
               </div>
               <div className="flex-1 flex flex-col justify-end items-center text-center w-full">
-                <h4 className="text-xl font-display text-neon-yellow mb-2 uppercase tracking-wider">La Clásica No.{item}</h4>
+                <h4 className="text-xl font-display text-inferno mb-2 uppercase tracking-wider">La Clásica No.{item}</h4>
                 <p className="text-sm text-cream/80">Doble carne, triple queso, salsa secreta.</p>
               </div>
             </div>
           ))}
         </div>
 
-        <button className="px-12 py-5 rounded-full bg-neon-pink text-white font-display font-bold tracking-widest uppercase text-lg hover:bg-neon-cyan hover:text-black transition-colors shadow-[0_0_30px_rgba(255,0,160,0.6)] hover:shadow-[0_0_50px_rgba(0,240,255,0.8)]">
+        <button className="px-12 py-5 rounded-full bg-gradient-to-r from-blood to-inferno text-white font-display font-bold tracking-widest uppercase text-lg hover:from-inferno hover:to-blood transition-all shadow-[0_0_30px_rgba(255,0,51,0.6)] hover:shadow-[0_0_50px_rgba(255,77,0,0.8)]">
           Insert Coin
         </button>
       </section>

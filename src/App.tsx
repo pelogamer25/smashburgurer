@@ -279,10 +279,13 @@ export default function App() {
       </div>
 
       {/* Hero Section (0-20vh) */}
-      <section className="absolute top-0 left-0 w-full h-screen flex items-center justify-center z-20 pointer-events-none px-4">
-        <h1 ref={taglineRef} className="text-4xl md:text-7xl lg:text-8xl font-display text-cream tracking-wide text-center drop-shadow-2xl">
-          {/* Text injected via JS */}
-        </h1>
+      <section className="absolute top-0 left-0 w-full h-screen flex items-start pt-[15vh] justify-center z-40 pointer-events-none px-4">
+        <div className="relative">
+          <div className="absolute inset-0 bg-blood/20 blur-[80px] rounded-full scale-150"></div>
+          <h1 ref={taglineRef} className="relative text-4xl md:text-7xl lg:text-8xl font-display text-cream tracking-wide text-center drop-shadow-[0_0_30px_rgba(250,2,2,0.8)]">
+            {/* Text injected via JS */}
+          </h1>
+        </div>
       </section>
 
       {/* Perfection Text (appears at 50%) */}
@@ -321,7 +324,7 @@ export default function App() {
 
       {/* Menu Teaser / CTA */}
       <section className="absolute top-[560vh] left-0 w-full min-h-screen z-20 flex flex-col items-center justify-center px-4 md:px-8 pb-40">
-        <h3 className="parallax-text text-4xl md:text-5xl font-display text-cream mb-12 md:mb-16 drop-shadow-[0_0_20px_rgba(250,2,2,0.5)] text-center tracking-widest">Creaciones de Autor</h3>
+        <h3 className="parallax-text text-4xl md:text-5xl font-display text-cream mb-12 md:mb-16 drop-shadow-[0_0_20px_rgba(250,2,2,0.5)] text-center tracking-widest text-shine-fx">Creaciones de Autor</h3>
         
         <div className="flex flex-wrap justify-center gap-12 mb-24">
           {[1, 2, 3].map((item) => (
@@ -329,7 +332,7 @@ export default function App() {
               key={item}
               onMouseMove={handleMouseMove}
               onMouseLeave={handleMouseLeave}
-              className="w-72 h-96 bg-cream/5 backdrop-blur-3xl border border-cream/10 rounded-2xl p-6 flex flex-col items-center justify-between shadow-[0_20px_50px_rgba(0,0,0,0.5)] hover:shadow-[0_0_60px_rgba(250,2,2,0.3)] hover:border-blood/50 transition-all duration-700 group"
+              className="shiny-card w-72 h-96 bg-cream/5 backdrop-blur-3xl border border-cream/10 rounded-2xl p-6 flex flex-col items-center justify-between shadow-[0_20px_50px_rgba(0,0,0,0.5)] hover:shadow-[0_0_60px_rgba(250,2,2,0.3)] hover:border-blood/50 transition-all duration-700 group"
             >
               <div className="w-full h-40 bg-black/40 rounded-xl border border-cream/5 mb-4 overflow-hidden relative flex items-center justify-center">
                  <div className="absolute inset-0 bg-gradient-to-br from-blood/30 to-transparent group-hover:opacity-100 opacity-30 transition-opacity duration-700"></div>
@@ -343,7 +346,7 @@ export default function App() {
           ))}
         </div>
 
-        <button className="px-14 py-5 rounded-full bg-gradient-to-r from-blood to-[#8a0000] text-cream font-display font-bold tracking-[0.2em] uppercase text-sm hover:from-[#8a0000] hover:to-blood transition-all duration-500 shadow-[0_0_40px_rgba(250,2,2,0.4)] hover:shadow-[0_0_60px_rgba(250,2,2,0.6)] border border-blood/50">
+        <button className="shiny-btn px-14 py-5 rounded-full bg-gradient-to-r from-blood to-[#8a0000] text-cream font-display font-bold tracking-[0.2em] uppercase text-sm hover:from-[#8a0000] hover:to-blood transition-all duration-500 shadow-[0_0_40px_rgba(250,2,2,0.4)] hover:shadow-[0_0_60px_rgba(250,2,2,0.6)] border border-blood/50">
           Insert Coin
         </button>
       </section>

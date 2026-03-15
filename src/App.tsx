@@ -236,7 +236,7 @@ export default function App() {
   };
 
   return (
-    <div ref={containerRef} className="relative w-full h-[680vh] bg-gradient-to-b from-[#030303] via-[#0a0000] to-[#030303] overflow-hidden">
+    <div ref={containerRef} className="relative w-full h-[700vh] md:h-[680vh] bg-gradient-to-b from-[#030303] via-[#0a0000] to-[#030303] overflow-hidden">
       {/* Global Overlays */}
       <div className="grain-overlay"></div>
       <div className="scroll-fog"></div>
@@ -323,16 +323,16 @@ export default function App() {
       </section>
 
       {/* Menu Teaser / CTA */}
-      <section className="absolute top-[560vh] left-0 w-full min-h-screen z-20 flex flex-col items-center justify-center px-4 md:px-8 pb-40">
-        <h3 className="parallax-text text-4xl md:text-5xl font-display text-cream mb-12 md:mb-16 drop-shadow-[0_0_20px_rgba(250,2,2,0.5)] text-center tracking-widest text-shine-fx">Creaciones de Autor</h3>
+      <section className="absolute top-[560vh] left-0 w-full min-h-screen z-20 flex flex-col items-center justify-center px-4 md:px-8 pb-20 md:pb-40">
+        <h3 className="parallax-text text-4xl md:text-5xl font-display text-cream mb-8 md:mb-16 drop-shadow-[0_0_20px_rgba(250,2,2,0.5)] text-center tracking-widest text-shine-fx">Creaciones de Autor</h3>
         
-        <div className="flex flex-wrap justify-center gap-12 mb-24">
+        <div className="flex flex-row md:flex-wrap overflow-x-auto md:overflow-x-visible snap-x snap-mandatory w-full md:w-auto md:justify-center gap-6 md:gap-12 mb-12 md:mb-24 pb-8 px-6 md:px-0 hide-scrollbar">
           {[1, 2, 3].map((item) => (
             <div 
               key={item}
               onMouseMove={handleMouseMove}
               onMouseLeave={handleMouseLeave}
-              className="shiny-card w-72 h-96 bg-cream/5 backdrop-blur-3xl border border-cream/10 rounded-2xl p-6 flex flex-col items-center justify-between shadow-[0_20px_50px_rgba(0,0,0,0.5)] hover:shadow-[0_0_60px_rgba(250,2,2,0.3)] hover:border-blood/50 transition-all duration-700 group"
+              className="shiny-card shrink-0 snap-center w-72 h-96 bg-cream/5 backdrop-blur-3xl border border-cream/10 rounded-2xl p-6 flex flex-col items-center justify-between shadow-[0_20px_50px_rgba(0,0,0,0.5)] hover:shadow-[0_0_60px_rgba(250,2,2,0.3)] hover:border-blood/50 transition-all duration-700 group"
             >
               <div className="w-full h-40 bg-black/40 rounded-xl border border-cream/5 mb-4 overflow-hidden relative flex items-center justify-center">
                  <div className="absolute inset-0 bg-gradient-to-br from-blood/30 to-transparent group-hover:opacity-100 opacity-30 transition-opacity duration-700"></div>

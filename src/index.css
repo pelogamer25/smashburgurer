@@ -209,6 +209,14 @@ h1, h2, h3, h4, h5, h6, .font-display {
 }
 
 /* Hide scrollbar */
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--color-void); }
 ::-webkit-scrollbar-thumb { background: var(--color-crimson); border-radius: 3px; }
